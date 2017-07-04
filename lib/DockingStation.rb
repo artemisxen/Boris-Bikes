@@ -1,13 +1,15 @@
 require 'bike'
 class DockingStation
+
 	attr_reader :bike
-	def initialize
-		#@bikes = []
-		@bike = nil
-	end
 
 	def release_bike
-		Bike.new
+		#Bike.new
+		if @bike.nil?
+			raise "No bikes available to release"
+		else
+			@bike
+		end
 	end
 
 	def dock(bike)
