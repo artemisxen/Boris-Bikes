@@ -1,3 +1,4 @@
+require 'bike'
 class DockingStation
 
 	def initialize
@@ -5,7 +6,7 @@ class DockingStation
 	end
 
 	def release_bike
-
+		Bike.new
 	end
 
 end
