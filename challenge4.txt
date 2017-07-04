@@ -1,0 +1,3 @@
+NameError
+/Users/ryandavidson/.rvm/rubies/ruby-2.4.0/bin/irb:11:in `<main>'
+from (irb):1
