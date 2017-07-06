@@ -1,3 +1,4 @@
+require 'pry'
 require './lib/bike.rb'
 class DockingStation
 
@@ -13,13 +14,24 @@ class DockingStation
 	def release_bike
 		#Bike.new
 		raise "No bikes available to release" if empty?
-		@bikes.pop
+		@bikes.each_with_index do |bike, index|
+		#	binding.pry
+			if @bikes[index].working? == true
+				#binding.pry
+				@bikes.delete_at(index)
+			#	binding.pry
+				break
+			end
+		end
+		#@bikes.pop
 	end
 
 	def dock(bike)
 		raise "Docking Station full" if full?
 		@bikes << bike
+		"This bike is broken!" if bike.working? == false
 	end
+
 
 	private
 	def full?
