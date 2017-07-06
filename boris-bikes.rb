@@ -1,7 +1,4 @@
 require './lib/dockingStation.rb'
+require './lib/bike.rb'
 
-docking_station = DockingStation.new
-#bike = docking_station.release_bike
-bike = bike.new
-#bike.working?
-docking_station.dock(bike)
+station = DockingStation.new(57)
