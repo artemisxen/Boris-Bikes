@@ -14,6 +14,7 @@ class DockingStation
 	def release_bike
 		released_bike = 0
 		raise "No bikes available to release" if empty?
+		raise "All bikes are broken" if @bikes.all? { |bike| bike.working? == false}
 		@bikes.each do |bike|
 			if bike.working? == true
 				released_bike = bike
