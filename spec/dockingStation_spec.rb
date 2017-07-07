@@ -37,6 +37,11 @@ describe DockingStation do
 		expect { subject.dock(bike) }.to raise_error("Docking Station full")
 	end
 
+	it "DockingStation to raise error if all bikes are broken and user tries to relase a bike" do
+		subject.dock(broken_bike)
+		expect { subject.release_bike }.to raise_error("All bikes are broken" )
+	end
+
 	it "checks to see that capacity can be set when a new DockingStation is created" do
 		expect(station.capacity).to eq 15
 	end
