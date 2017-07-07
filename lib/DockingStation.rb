@@ -2,8 +2,7 @@ require 'pry'
 require './lib/bike.rb'
 class DockingStation
 
-	attr_reader :bikes
-	attr_reader :capacity
+	attr_reader :bikes, :capacity
 
 	DEFAULT_CAPACITY = 20
 
@@ -14,20 +13,15 @@ class DockingStation
 
 	def release_bike
 		released_bike = 0
-		#Bike.new
 		raise "No bikes available to release" if empty?
-		@bikes.each_with_index do |bike, index|
-		#binding.pry
-			if @bikes[index].working? == true
-				#binding.pry
+		@bikes.each do |bike|
+			if bike.working? == true
 				released_bike = bike
-				@bikes.delete_at(index)
-			#binding.pry
+				@bikes.delete(bike)
 				break
 			end
 		end
 		released_bike
-		#@bikes.pop
 	end
 
 	def dock(bike)
