@@ -5,9 +5,9 @@ require 'bike'
 describe DockingStation do
 	subject { DockingStation.new }
 
-	let(:bike) { Bike.new }#Individual bike
+	let(:bike) { double(:bike, :working? => true)}#Individual bike
 	let(:station) {DockingStation.new(15)}
-	let(:broken_bike) { Bike.new(false)}
+	let(:broken_bike) { double(:bike, :working? => false)}
 
 	it "DockingStation respond to release_bike" do
 		expect(subject).to respond_to(:release_bike)
@@ -24,7 +24,7 @@ describe DockingStation do
 	it "DockingStation to return a bike after release_bike called" do
 
 		subject.dock(bike)
-		expect(subject.release_bike).to be_a Bike
+		expect(subject.release_bike).to eq bike
 	end
 
 	it "checks to see that we don't release broken bikes" do
