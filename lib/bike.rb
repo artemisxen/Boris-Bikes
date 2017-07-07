@@ -5,4 +5,12 @@ class Bike
 	def working?
 		@working == true ? true:false
 	end
+
+	def broken
+		@working = false
+	end
+
+	def fix
+		@working = true
+	end
 end
