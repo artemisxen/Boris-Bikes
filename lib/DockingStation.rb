@@ -6,23 +6,27 @@ class DockingStation
 	attr_reader :capacity
 
 	DEFAULT_CAPACITY = 20
+
 	def initialize(capacity = DEFAULT_CAPACITY)
 		@bikes = []
 		@capacity = capacity
 	end
 
 	def release_bike
+		released_bike = 0
 		#Bike.new
 		raise "No bikes available to release" if empty?
 		@bikes.each_with_index do |bike, index|
-		#	binding.pry
+		#binding.pry
 			if @bikes[index].working? == true
 				#binding.pry
+				released_bike = bike
 				@bikes.delete_at(index)
-			#	binding.pry
+			#binding.pry
 				break
 			end
 		end
+		released_bike
 		#@bikes.pop
 	end
 
